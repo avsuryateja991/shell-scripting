@@ -1,12 +1,12 @@
 #!/bin/bash
 
 echo "Enter user name:"
-read -s $PERSON1
-echo "User name is: $PERSON1"
+read -s PERSON1
+echo "User name is: PERSON1"
 
 echo "Enter pass:"
-read -s $PERSON2
-echo "Pass entered is: $PERSON2"
+read -s PERSON2
+echo "Pass entered is: PERSON2"
 
 
 echo "$PERSON1 : Hi $PERSON2"
