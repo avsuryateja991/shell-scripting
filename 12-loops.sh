@@ -22,6 +22,6 @@ do
         dnf install $package -y &>>$LOG_FILE_NAME
         echo "$package installed freshly"
     else
-        echo -e " $package already installed"
+        echo " $package already installed"
     fi
 done
