@@ -13,13 +13,15 @@ then
 fi
 
 echo "script started eecuting at: $TIMESTAMP" &>>$LOG_FILE_NAME
-
+echo "file created"
 for package in $@
 do
     dnf list installed $package &>>$LOG_FILE_NAME
+    echo "listed the packages"
     if [ $? -ne 0 ]
     then
         dnf install $package -y &>>$LOG_FILE_NAME
+        echo "installed packages"
         echo "$package installed freshly"
     else
         echo " $package already installed"
