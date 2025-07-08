@@ -1,16 +1,5 @@
 #!/bin/bash
 
-
-VALIDATE(){
-        if [ $1 -ne 0 ]
-        then
-                echo "Installing $2 Failed"
-                exit 1
-        else
-                echo "Installing $2 success"
-        fi
-}
-
 LOGS_FOLDER="/var/log/"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M)
@@ -25,13 +14,13 @@ fi
 
 echo "script started eecuting at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
-
 for package in $@
 do
     dnf list installed $package &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]
     then
-        dnf install $package -y
+        dnf install $package -y &>>$LOG_FILE_NAME
+        echo "$package installed freshly"
     else
         echo -e " $package already installed"
     fi
