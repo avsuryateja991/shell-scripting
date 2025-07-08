@@ -32,5 +32,7 @@ do
     if [ $? -ne 0 ]
     then
         dnf install $package -y
+    else
+        echo -e " $package already installed"
     fi
 done
