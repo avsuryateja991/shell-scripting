@@ -15,11 +15,11 @@ fi
 echo "script started eecuting at: $TIMESTAMP" &>>$LOG_FILE_NAME
 for pack in $@
 do
-    dnf list installed $pack 
+    dnf list installed $pack &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]
     then
-        dnf install $pack -y 
-        echo "$pack installed freshly"
+        dnf install $pack -y &>>$LOG_FILE_NAME
+        echo "$pack installed freshly" 
     else
         echo " $pack already installed"
     fi
